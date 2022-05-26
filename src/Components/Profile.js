@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import DataTable from './DataTable';
+import UserContext from '../context/UserContext';
 
 function Profile() {
+  const [movie, setMovie] = useState('');
+  const [genre, setGenre] = useState('');
+  const [rating, setRating] = useState('');
+  const userdata = useContext(UserContext);
+
   return (
     <div className= 'm-auto text-center pt-5 px-3'>
         <div style={{display:'flex'}}>
@@ -15,10 +21,10 @@ function Profile() {
         <DataTable/>
         <h3 className='w-64 text-center m-auto mt-5 mb-2 text-xl text-white py-1.5' style={{background: '#004d4d',borderRadius:'10px'}}>Add movie in Watchlist</h3>
         <div style={{width:'50%',margin:'auto'}}>
-            <input type="text" placeholder='Enter Name' className="mr-6 w-48 mt-3 h-12 px-3 text-lg input1" style={{background:'#b3b3b3',borderRadius:'8px'}} />
-            <input type="text" placeholder='Enter Genre' className="mr-6 w-48 mt-3 h-12 px-3 text-lg input1" style={{background:'#b3b3b3',borderRadius:'8px'}} />
-            <input type="text" placeholder='Enter Rating' className="mr-6 w-48 mt-3 h-12 px-3 text-lg input1" style={{background:'#b3b3b3',borderRadius:'8px'}} />
-            <button className='py-1.5 px-4 text-white text-2xl' style={{background:'#00001a',borderRadius:'8px'}}>Add</button>
+            <input value={movie} onInput={e => setMovie(e.target.value)} type="text" placeholder='Enter Name' className="mr-6 w-48 mt-3 h-12 px-3 text-lg input1" style={{background:'#b3b3b3',borderRadius:'8px'}} />
+            <input value={genre} onInput={e => setGenre(e.target.value)} type="text" placeholder='Enter Genre' className="mr-6 w-48 mt-3 h-12 px-3 text-lg input1" style={{background:'#b3b3b3',borderRadius:'8px'}} />
+            <input value={rating} onInput={e => setRating(e.target.value)} type="text" placeholder='Enter Rating' className="mr-6 w-48 mt-3 h-12 px-3 text-lg input1" style={{background:'#b3b3b3',borderRadius:'8px'}} />
+            <button onClick={handleonsubmit} className='py-1.5 px-4 text-white text-2xl' style={{background:'#00001a',borderRadius:'8px'}}>Add</button>
         </div>
     </div>
   )

@@ -6,6 +6,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+// import UserContext from '../context/UserContext';
 
 function createData(id, movie,genre,rating,action) {
     return {id, movie,genre,rating,action};
@@ -16,6 +17,12 @@ function createData(id, movie,genre,rating,action) {
   ];
 
 function DataTable() {
+
+  // const userdata = useContext(UserContext);
+  
+  // useEffect(() =>{
+  //   userdata.collectdata();
+  // }, []);
   return (
     <div className='mt-3' style={{width:'50%',margin:'auto'}}>
         <TableContainer component={Paper} style={{borderRadius:'12px',boxShadow:'none'}}>
