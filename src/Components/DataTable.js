@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useContext,useEffect} from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -6,23 +6,20 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-// import UserContext from '../context/UserContext';
+import UserContext from '../context/UserContext';
 
 function createData(id, movie,genre,rating,action) {
     return {id, movie,genre,rating,action};
   }
   
-  const rows = [
-    createData('1', 'Skyfall','action', '7.8'),
-  ];
-
+ 
 function DataTable() {
 
-  // const userdata = useContext(UserContext);
+  const userdata = useContext(UserContext);
   
-  // useEffect(() =>{
-  //   userdata.collectdata();
-  // }, []);
+  useEffect(() =>{
+    userdata.collectdata();
+  }, [userdata]);
   return (
     <div className='mt-3' style={{width:'50%',margin:'auto'}}>
         <TableContainer component={Paper} style={{borderRadius:'12px',boxShadow:'none'}}>
@@ -42,17 +39,17 @@ function DataTable() {
     <TableContainer component={Paper} style={{background:'transparent',boxShadow:'none',border:'none'}}>
       <Table sx={{ minWidth: 450 }} style={{borderRadius:'50px'}} aria-label="simple table">
         <TableBody>
-          {rows.map((row) => (
+          {userdata.row.map((row) => (
             <TableRow
               key={row.id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               <TableCell align='center' component="th" scope="row">
-                {row.id}
+                0
               </TableCell>
-              <TableCell align="center">{row.movie}</TableCell>
-              <TableCell align="center">{row.genre}</TableCell>
-              <TableCell align="center">{row.rating}</TableCell>
+              <TableCell align="center">{userdata.Movies}</TableCell>
+              <TableCell align="center">{userdata.Genres}</TableCell>
+              <TableCell align="center">{userdata.Ratings}</TableCell>
               <TableCell align="center">
                   <button>Delete</button>
               </TableCell>

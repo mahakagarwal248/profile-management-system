@@ -6,8 +6,29 @@ function Profile() {
   const [movie, setMovie] = useState('');
   const [genre, setGenre] = useState('');
   const [rating, setRating] = useState('');
+  // const [rows,setRow] = useState([])
+  const rows =[]
   const userdata = useContext(UserContext);
-
+  
+  function handleonsubmit(){
+    rows.push({
+      movie: movie,
+      genre:genre,
+      rating:rating
+    })
+    console.log(rows)
+    userdata.setRow(rows)
+    // setRow([...rows],{
+    //   movie: movie,
+    //   genre: genre,
+    //   rating: rating,
+    // })
+    // localStorage.setItem("moviedata",JSON.stringify(rows))
+    // userdata.setMovies(movie);
+    // userdata.setGenres(genre);
+    // userdata.setRatings(rating);
+    
+  }
   return (
     <div className= 'm-auto text-center pt-5 px-3'>
         <div style={{display:'flex'}}>

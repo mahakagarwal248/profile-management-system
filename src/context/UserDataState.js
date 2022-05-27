@@ -5,6 +5,7 @@ const Userdatastate = (props) => {
   const [Movies, setMovies] = useState("");
   const [Genres, setGenres] = useState("");
   const [Ratings, setRatings] = useState("");
+  const [row,setRow] =useState([]);
 
   const collectdata = () => {
     if (Movies === "") {
@@ -18,7 +19,7 @@ const Userdatastate = (props) => {
   };
   const setlocaldata = () => {
     localStorage.setItem(
-      "data",
+      "moviedata",
       JSON.stringify({
         movie: Movies,
         genre: Genres,
@@ -29,6 +30,7 @@ const Userdatastate = (props) => {
   return (
     <UserContext.Provider
       value={{
+        setRow,
         setlocaldata,
         collectdata,
         Movies, 
